@@ -18,11 +18,17 @@ class CustomAppBar extends StatelessWidget {
         vertical: 10.0,
         horizontal: 24.0,
       ),
-      color: Colors.black.withOpacity(scrollOffSet / 350.clamp(0, 1).toDouble()),
+      color: Colors.white.withOpacity((scrollOffSet / 700).clamp(0.0, 1.0).toDouble(),),
       child: SafeArea(
         child: Row(
           children: [
             Image.asset(Assets.netflixLogo0),
+            TextButton(
+              child: Text("Aqui"),
+              onPressed: () => {
+                print((scrollOffSet / 700).clamp(0.0, 1.0).toDouble())
+              },
+            ),
             const SizedBox(
               width: 12.0,
             ),

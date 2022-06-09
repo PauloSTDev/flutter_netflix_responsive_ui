@@ -7,16 +7,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  double _scrollOffSet = 0.0;
   ScrollController _scrollController;
+  double _scrollOffSet = 0.0;
+
 
   @override
   void initState() {
-    _scrollController = ScrollController()..addListener(() {
-      setState(() {
-        _scrollOffSet = _scrollController.offset;
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {
+          _scrollOffSet = _scrollController.offset;
+        });
       });
-    });
     super.initState();
   }
 
@@ -46,8 +48,6 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-
-
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.grey[850],
         child: const Icon(Icons.cast),
