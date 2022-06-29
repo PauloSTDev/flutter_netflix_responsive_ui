@@ -52,6 +52,7 @@ class ContentHeader extends StatelessWidget {
                   title: "List",
                   onTap: () => print("list"),
               ),
+              _PlayButton(),
               VerticalIconButton(
                   icon: Icons.info_outline,
                   title: "Info",
@@ -61,6 +62,24 @@ class ContentHeader extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+
+class _PlayButton extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton.icon(
+      onPressed: () => print('Play'),
+        style: TextButton.styleFrom(
+            padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          primary: Colors.black,
+          backgroundColor: Colors.white
+        ),
+      icon: const Icon(Icons.play_arrow, size: 30.0),
+      label: const Text("Play", style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),)
     );
   }
 }
