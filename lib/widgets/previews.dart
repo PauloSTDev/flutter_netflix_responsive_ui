@@ -44,7 +44,14 @@ class Previews extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(horizontal: 16.0),
                       height: 130.0,
                       width: 130.0,
-                      color: Colors.purple,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(content.imageUrl),
+                          fit: BoxFit.cover,
+                        ),
+                        shape: BoxShape.circle,
+                        border: Border.all(color: content.color, width: 4.0),
+                      ),
                     ),
                   ],
                 ),
