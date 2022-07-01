@@ -66,9 +66,7 @@ class ContentHeader extends StatelessWidget {
   }
 }
 
-
 class _PlayButton extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return TextButton.icon(
