@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_netflix_responsive_ui/data/data.dart';
 import 'package:flutter_netflix_responsive_ui/widgets/content_header.dart';
+import 'package:flutter_netflix_responsive_ui/widgets/content_list.dart';
 import 'package:flutter_netflix_responsive_ui/widgets/custom_app_bar.dart';
 import 'package:flutter_netflix_responsive_ui/widgets/previews.dart';
 
@@ -56,7 +57,26 @@ class _HomeScreenState extends State<HomeScreen> {
             sliver: SliverToBoxAdapter(
               child: Previews(title: "Previews", contentList: previews),
             ),
-          )
+          ),
+          SliverToBoxAdapter(
+            child: ContentList(
+              title: "My List",
+              contentList: myList,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: ContentList(
+              title: "NetFlix Originals",
+              contentList: myList,
+              isOriginals: true,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: ContentList(
+              title: "Trending",
+              contentList: trending,
+            ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
