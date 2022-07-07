@@ -6,11 +6,14 @@ import 'package:flutter_netflix_responsive_ui/widgets/custom_app_bar.dart';
 import 'package:flutter_netflix_responsive_ui/widgets/previews.dart';
 
 class HomeScreen extends StatefulWidget {
+
+  const HomeScreen({Key key}) : super(key: key);
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   ScrollController _scrollController;
   double _scrollOffSet = 0.0;
 
