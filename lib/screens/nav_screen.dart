@@ -19,6 +19,7 @@ class _NavScreenState extends State<NavScreen> {
     "Home": Icons.home,
     "Search": Icons.search,
     "Coming Soon": Icons.queue_play_next,
+    "Downloads" : Icons.download,
     "More": Icons.menu,
   };
 
@@ -29,6 +30,8 @@ class _NavScreenState extends State<NavScreen> {
     return Scaffold(
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.black,
           items: _icons
               .map((title, icon) => MapEntry(
                 title,
@@ -37,6 +40,12 @@ class _NavScreenState extends State<NavScreen> {
                   label: title,
                 )))
               .values.toList(),
+        currentIndex: _currentIndex,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        selectedFontSize: 11.0,
+        unselectedFontSize: 11.0,
+        onTap: (index) => setState(() => _currentIndex = index),
       ),
     );
   }
