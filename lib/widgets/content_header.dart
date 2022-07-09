@@ -106,7 +106,7 @@ class _ContentDesktopState extends State<_ContentDesktop> {
     super.initState();
     _videoController =
         VideoPlayerController.network(widget.featureContent.videoUrl)
-          ..initialize().then((_) => setState(() => {}));
+          ..initialize().then((_) => setState(() => {}))..setVolume(0)..play();
   }
 
   @override
