@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_netflix_responsive_ui/cubits/app_bar/app_bar_cubit.dart';
 import 'package:flutter_netflix_responsive_ui/data/data.dart';
 import 'package:flutter_netflix_responsive_ui/widgets/content_header.dart';
 import 'package:flutter_netflix_responsive_ui/widgets/content_list.dart';
 import 'package:flutter_netflix_responsive_ui/widgets/custom_app_bar.dart';
 import 'package:flutter_netflix_responsive_ui/widgets/previews.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
 
   const HomeScreen({Key key}) : super(key: key);
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -15,16 +18,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   ScrollController _scrollController;
-  double _scrollOffSet = 0.0;
 
 
   @override
   void initState() {
     _scrollController = ScrollController()
       ..addListener(() {
-        setState(() {
-          _scrollOffSet = _scrollController.offset;
-        });
+        BlocProvider.of<AppBarCubit>(context).setOffet(
+            _scrollController.offset);
       });
     super.initState();
   }
@@ -45,7 +46,11 @@ class _HomeScreenState extends State<HomeScreen> {
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 50.0),
-        child: CustomAppBar(scrollOffSet: _scrollOffSet),
+        child: BlocBuilder<AppBarCubit, double>(
+          builder: (context, scrollOffset) {
+            return CustomAppBar(scrollOffSet: scrollOffset);
+          },
+        ),
       ),
       body: CustomScrollView(
         controller: _scrollController,
@@ -60,8 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
             sliver: SliverToBoxAdapter(
               child: Previews(
                 key: PageStorageKey("previews"),
-                  title: "Previews",
-                  contentList: previews,
+                title: "Previews",
+                contentList: previews,
               ),
             ),
           ),

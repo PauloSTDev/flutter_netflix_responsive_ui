@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_netflix_responsive_ui/cubits/app_bar/app_bar_cubit.dart';
 import 'package:flutter_netflix_responsive_ui/screens/home_screen.dart';
+import 'package:flutter_netflix_responsive_ui/widgets/responsive.dart';
 
 class NavScreen extends StatefulWidget {
   @override
@@ -28,8 +31,13 @@ class _NavScreenState extends State<NavScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
+      body: BlocProvider<AppBarCubit>(
+        child: _screens[_currentIndex],
+        create: (_) => AppBarCubit(),
+      ),
+      bottomNavigationBar: !Responsive.isDesktop(context) ?
+
+      BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.black,
           items: _icons
@@ -46,7 +54,7 @@ class _NavScreenState extends State<NavScreen> {
         selectedFontSize: 11.0,
         unselectedFontSize: 11.0,
         onTap: (index) => setState(() => _currentIndex = index),
-      ),
+      ) : null,
     );
   }
 }
