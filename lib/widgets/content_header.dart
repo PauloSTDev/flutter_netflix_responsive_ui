@@ -106,7 +106,9 @@ class _ContentDesktopState extends State<_ContentDesktop> {
     super.initState();
     _videoController =
         VideoPlayerController.network(widget.featureContent.videoUrl)
-          ..initialize().then((_) => setState(() => {}))..setVolume(0)..play();
+          ..initialize().then((_) => setState(() => {}))
+          ..setVolume(0)
+          ..play();
   }
 
   @override
@@ -131,8 +133,27 @@ class _ContentDesktopState extends State<_ContentDesktop> {
             child: _videoController.value.isInitialized
                 ? VideoPlayer(_videoController)
                 : Image.asset(
-                widget.featureContent.imageUrl,
-            fit: BoxFit.cover,
+                    widget.featureContent.imageUrl,
+                    fit: BoxFit.cover,
+                  ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: -1.0,
+            child: AspectRatio(
+              aspectRatio: _videoController.value.isInitialized
+                  ? _videoController.value.aspectRatio
+                  : 2.344,
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.black, Colors.transparent],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                  ),
+                ),
+              ),
             ),
           ),
           Container(
@@ -191,7 +212,7 @@ class _ContentDesktopState extends State<_ContentDesktop> {
                       onPressed: () => print("More Info"),
                       label: const Text("More Info"),
                       style: TextButton.styleFrom(
-                          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                          padding: EdgeInsets.fromLTRB(25.0, 15.0, 30.0, 15.0),
                           primary: Colors.black,
                           backgroundColor: Colors.white,
                           textStyle: TextStyle(
@@ -204,6 +225,9 @@ class _ContentDesktopState extends State<_ContentDesktop> {
                     ),
                     if (_videoController.value.isInitialized)
                       IconButton(
+                        padding: !Responsive.isDesktop(context)
+                            ? EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0)
+                            : EdgeInsets.fromLTRB(25.0, 10.0, 30.0, 10.0),
                         color: Colors.white,
                         iconSize: 30.0,
                         onPressed: () => setState(() {
