@@ -8,6 +8,7 @@ Projeto finalizado
     Desktop e Tablet
   </h2>
   <img src="https://user-images.githubusercontent.com/67521304/197083884-f22370d6-cd1d-4725-a246-4e8195b76acb.png"/ width="900">
+  <div>.</div>
   <img src="https://user-images.githubusercontent.com/67521304/197204872-46c7fb7f-dbe5-41cd-9e66-6c67f7200278.png"/ width="900">
 
   <h2>
